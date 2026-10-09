@@ -4,8 +4,15 @@
 }
 
 .row {
-  position: relative;
+  /* A streaming body outgrows the reading pane, so the title and its collapse
+     chevron would scroll away with it. Pin the header to the transcript top:
+     the body scrolls under an opaque fill and the chevron stays reachable
+     while the tokens keep arriving. */
+  position: sticky;
+  top: 0;
+  z-index: 1;
   overflow: hidden;
+  background: var(--dsw-alias-bg-base);
 }
 
 .root[data-state='running'] .row::after {
